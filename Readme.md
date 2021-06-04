@@ -60,6 +60,11 @@ The API-Flags define in which scope a functionality is used and where it get's i
 
 **Classes** \
 [`Account`](organization/class/Account.md) \
+[`Collection`](organization/class/Collection.md) \
+ ├ [`Home`](organization/class/Home.md) \
+ ├ [`List`](organization/class/List.md) \
+ ├ [`Mentions`](organization/class/Mentions.md) \
+ └ [`Timeline`](organization/class/Timeline.md) \
 [`Thread`](organization/class/Thread.md)
 
 ### Utils
