@@ -39,7 +39,7 @@ How the user descripes itself.
 public string created_at { get; }
 ```
 
-When the User created his account.
+When this Profile was created.
 
 | API   | Twitter 1    | Twitter 2       | Mastodon        |
 | ----- | ------------ | --------------- | --------------- |
@@ -71,7 +71,7 @@ public Picture header { get; }
 
 The header image of the User (for the profile page), stored as a [`Picture`](Picture.md).
 
-> Mastodon provides the option to use a animated GIF (which we store as a [`Animated`](Animated.md)) as a avatar. For now, we will not consider this option as it makes the code more complex and use always the static variant.
+> Mastodon provides the option to use a animated GIF (which we store as a [`Animated`](Animated.md)) as a header. For now, we will not consider this option as it makes the code more complex and use always the static variant.
 
 | API   | Twitter 1            | Twitter 2 | Mastodon        |
 | ----- | -------------------- | --------- | --------------- |
@@ -127,9 +127,9 @@ How many posts this User wrote.
 > 
 > [**`id`**](../../content/class/User.md#property_id)
 > 
-> [**`name`**](../../content/class/User.md#property_name)
+> [**`display_name`**](../../content/class/User.md#property_display_name)
 > 
-> [**`alias`**](../../content/class/User.md#property_alias)
+> [**`username`**](../../content/class/User.md#property_username)
 > 
 > [**`avatar`**](../../content/class/User.md#property_avatar)
 
@@ -177,8 +177,6 @@ private string raw_description
 
 The [`description`](#property_description) as it is recieved from the API, to be later formatted.
 
-> This field might be only available in debug builds, as we should not need this field after formatting.
-
 | API   | Twitter 1     | Twitter 2     | Mastodon |
 | ----- | ------------- | ------------- | -------- |
 | Field | `description` | `description` | `note`   |
@@ -193,8 +191,6 @@ private TextEntity[] description_entities
 ```
 
 All entities found in the text, to provide additional informations for the text formatting. See [TextEntity](../structure/TextEntity.md).
-
-> This field might be only available in debug builds, as we should not need this field after formatting.
 
 | API   | Twitter 1    | Twitter 2    |
 | ----- | ------------ | ------------ |

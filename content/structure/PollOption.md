@@ -13,23 +13,6 @@ A small helper structure for storing options in a [`Poll`](../class/Poll.md).
 
 ## Fields
 
-### `position`
-
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square)\
-
-```c#
-public int position
-```
-
-The position of the option in the Poll.
-
-> Probably unnecessary, for example Mastodon does not include it as well.
-
-| API   | Twitter 2  |
-| ----- | ---------- |
-| Field | `position` |
-| Type  | int        |
-
 ### `title`
 
 ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)

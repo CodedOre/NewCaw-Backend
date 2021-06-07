@@ -34,6 +34,8 @@ The unique identifier a Post has on the platform.
 
 ### `type` {#property_type}
 
+![API: Internal](https://img.shields.io/badge/API-Internal-green?style=flat-square)\
+
 ```c#
 public PostType type { get; }
 ```
@@ -291,8 +293,6 @@ private string raw_text
 
 The [`text`](#property_text) as it is recieved from the API, to be later formatted.
 
-> This field might be only available in debug builds, as we should not need this field after formatting.
-
 | API   | Twitter 1    | Twitter 2    | Mastodon    |
 | ----- | ------------ | ------------ | ----------- |
 | Field | `text`       | `text`       | `content`   |
@@ -307,8 +307,6 @@ private TextEntity[] text_entities
 ```
 
 All entities found in the text, to provide additional informations for the text formatting. See [TextEntity](../structure/TextEntity.md).
-
-> This field might be only available in debug builds, as we should not need this field after formatting.
 
 | API   | Twitter 1    | Twitter 2    |
 | ----- | ------------ | ------------ |

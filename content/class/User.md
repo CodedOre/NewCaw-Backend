@@ -32,27 +32,27 @@ The unique identifier of a user.
 | Field | `id_str`  | `id`      | `id`     |
 | Type  | string    | string    | string   |
 
-### `name` {#property_name}
+### `display_name` {#property_display_name}
 
 ![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
-public string name { get; }
+public string display_name { get; }
 ```
 
-The "name" of a user. Also reffered to as "display name".
+The "name" of a user.
 
 | API   | Twitter 1 | Twitter 2 | Mastodon       |
 | ----- | --------- | --------- | -------------- |
 | Field | `name`    | `name`    | `display_name` |
 | Type  | string    | string    | string         |
 
-### `alias` {#property_alias}
+### `username` {#property_username}
 
 ![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
-public string alias { get; }
+public string username { get; }
 ```
 
 The unique handle of a user to identify it on the platform.

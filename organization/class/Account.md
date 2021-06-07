@@ -43,9 +43,9 @@ The proxy that allows to do an API-call.
 > > 
 > > [**`id`**](../../content/class/User.md#property_id)
 > > 
-> > [**`name`**](../../content/class/User.md#property_name)
+> > [**`display_name`**](../../content/class/User.md#property_display_name)
 > > 
-> > [**`alias`**](../../content/class/User.md#property_alias)
+> > [**`username`**](../../content/class/User.md#property_username)
 > > 
 > > [**`avatar`**](../../content/class/User.md#property_avatar)
 
