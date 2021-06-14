@@ -3,17 +3,16 @@ Author: Frederick Schenk
 
 # Organization/Home
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface Home : Collection
 ```
 
 `Home` inheriteds [`Collection`](Collection.md) and provides support for the users home timeline.
 
-| API      | Twitter 1 | Twitter 2 | Mastodon |
-| -------- | --------- | --------- | -------- |
-| Function | [`statuses/home_timeline`](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-home_timeline) |  | [`timelines/home`](https://docs.joinmastodon.org/methods/timelines/) |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | [`statuses/home_timeline`](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-home_timeline) | ![No API endpoint yet][2] | [`timelines/home`](https://docs.joinmastodon.org/methods/timelines/) |
 
 ## Properties
 
@@ -25,35 +24,35 @@ public interface Home : Collection
 
 ### `Home`
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public Home (Account account)
 ```
 
 Creates `Home` for a given [`Account`](Account.md) and pulls posts.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Methods
 
-### `get_posts` {#method_get_posts}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
-```c#
-public Post[] get_posts ()
-```
-
-Returns [`post_list`](#field_post_list) to the caller.
-
 ### `get_new_posts` {#method_get_new_posts}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public Post[] get_new_posts ()
 ```
 
 Calls the API to load new posts and returns them.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
+> ### Inherited from [`Collection`](Collection.md)
+> 
+> [**`get_posts`**](Collection.md#method_get_posts)
 
 ## Fields
 
@@ -62,3 +61,10 @@ Calls the API to load new posts and returns them.
 > [**`post_list`**](Collection.md#field_post_list)
 > 
 > [**`last_pulled_post`**](Collection.md#field_last_pulled_post)
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

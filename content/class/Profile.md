@@ -3,8 +3,6 @@ Author: Frederick Schenk
 
 # Content/Profile
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface Profile : User
 ```
@@ -13,15 +11,14 @@ public interface Profile : User
 
 > The main usecase for `Profile` would be the profile page. Instead of just using `User` and calling additional data when needed I want to use a backend class in order to achieve two things: First to have a decisive split between back- and frontend (as in frontend only displays and backend only gets data), and secondly to also have an option to cache the data should we want to use it again.
 
-| API    | Twitter 1 | Twitter 2 | Mastodon |
-| ------ | --------- | --------- | -------- |
-| Object | [User](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/user) | [User](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user) | [Account](https://docs.joinmastodon.org/entities/account/) |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | [User](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/user) | [User](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user) | [Account](https://docs.joinmastodon.org/entities/account/) |
 
 ## Properties
 
 ### `description` {#property_description}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public string description { get; }
@@ -31,9 +28,12 @@ How the user descripes itself.
 
 > This is the final version formatted for the use in the UI, formatted by [`format_text`](../../utils/namespace/ParseUtils.md#method_format_text), while the original text is found in [`raw_description`](#field_raw_description).
 
-### `created_at` {#property_created_at}
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
+### `created_at` {#property_created_at}
 
 ```c#
 public string created_at { get; }
@@ -41,14 +41,12 @@ public string created_at { get; }
 
 When this Profile was created.
 
-| API   | Twitter 1    | Twitter 2       | Mastodon        |
-| ----- | ------------ | --------------- | --------------- |
-| Field | `created_at` | `created_at`    | `created_at`    |
-| Type  | string       | ISO 8601 string | ISO 8601 string |
+| Scope        | `TwitterLegacy`       | `Twitter`                      | `Mastodon`                     |
+| ------------ | --------------------- | ------------------------------ | ------------------------------ |
+| Available    | ✓                     | ✓                              | ✓                              |
+| API-Endpoint | `created_at` (string) | `created_at` (ISO 8601 string) | `created_at` (ISO 8601 string) |
 
 ### `fields` {#property_fields}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public UserDataField[] fields { get; }
@@ -56,14 +54,12 @@ public UserDataField[] fields { get; }
 
 Fields providing additional informations about the User. See [`UserDataField`](../structure/UserDataField.md).
 
-| API   | Twitter 1          | Twitter 2          | Mastodon |
-| ----- | ------------------ | ------------------ | -------- |
-| Field | `location` & `url` | `location` & `url` | `fields` |
-| Type  | string             | string             | array    |
+| Scope        | `TwitterLegacy`             | `Twitter`                   | `Mastodon`       |
+| ------------ | --------------------------- | --------------------------- | ---------------- |
+| Available    | ✓                           | ✓                           | ✓                |
+| API-Endpoint | `location` & `url` (string) | `location` & `url` (string) | `fields` (array) |
 
 ### `header` {#property_header}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public Picture header { get; }
@@ -73,14 +69,12 @@ The header image of the User (for the profile page), stored as a [`Picture`](Pic
 
 > Mastodon provides the option to use a animated GIF (which we store as a [`Animated`](Animated.md)) as a header. For now, we will not consider this option as it makes the code more complex and use always the static variant.
 
-| API   | Twitter 1            | Twitter 2 | Mastodon        |
-| ----- | -------------------- | --------- | --------------- |
-| Field | `profile_banner_url` |           | `header_static` |
-| Type  | url string           |           | url string      |
+| Scope        | `TwitterLegacy`               | `Twitter`                 | `Mastodon`               |
+| ------------ | ----------------------------- | ------------------------- | ------------------------ |
+| Available    | ✓                             | ✓                         | ✓                        |
+| API-Endpoint | `profile_banner_url` (string) | ![No API endpoint yet][2] | `header_static` (string) |
 
 ### `followers_count` {#property_followers_count}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public uint followers_count { get; set; }
@@ -88,14 +82,12 @@ public uint followers_count { get; set; }
 
 How many people are following this User.
 
-| API   | Twitter 1         | Twitter 2                        | Mastodon          |
-| ----- | ----------------- | -------------------------------- | ------------------|
-| Field | `followers_count` | `public_metrics/followers_count` | `followers_count` |
-| Type  | int               | int                              | int               |
+| Scope        | `TwitterLegacy`         | `Twitter`                              | `Mastodon`              |
+| ------------ | ----------------------- | -------------------------------------- | ----------------------- |
+| Available    | ✓                       | ✓                                      | ✓                       |
+| API-Endpoint | `followers_count` (int) | `public_metrics/followers_count` (int) | `followers_count` (int) |
 
 ### `following_count` {#property_following_count}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public uint following_count { get; set; }
@@ -103,14 +95,12 @@ public uint following_count { get; set; }
 
 How many people this User follows.
 
-| API   | Twitter 1       | Twitter 2                        | Mastodon          |
-| ----- | --------------- | -------------------------------- | ------------------|
-| Field | `friends_count` | `public_metrics/following_count` | `following_count` |
-| Type  | int             | int                              | int               |
+| Scope        | `TwitterLegacy`       | `Twitter`                              | `Mastodon`              |
+| ------------ | --------------------- | -------------------------------------- | ----------------------- |
+| Available    | ✓                     | ✓                                      | ✓                       |
+| API-Endpoint | `friends_count` (int) | `public_metrics/following_count` (int) | `following_count` (int) |
 
 ### `posts_count` {#property_post_count}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public uint posts_count { get; set; }
@@ -118,10 +108,10 @@ public uint posts_count { get; set; }
 
 How many posts this User wrote.
 
-| API   | Twitter 1        | Twitter 2                    | Mastodon         |
-| ----- | ---------------- | ---------------------------- | -----------------|
-| Field | `statuses_count` | `public_metrics/tweet_count` | `statuses_count` |
-| Type  | int              | int                          | int              |
+| Scope        | `TwitterLegacy`        | `Twitter`                          | `Mastodon`             |
+| ------------ | ---------------------- | ---------------------------------- | ---------------------- |
+| Available    | ✓                      | ✓                                  | ✓                      |
+| API-Endpoint | `statuses_count` (int) | `public_metrics/tweet_count` (int) | `statuses_count` (int) |
 
 > ### Inherited from [`User`](../../content/class/User.md)
 > 
@@ -137,23 +127,29 @@ How many posts this User wrote.
 
 ### `from_json` {#creation_method_from_json}
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public Profile.from_json (Json.Object obj)
 ```
 
 Creates a new object out of a given Json object from other points.
 
-### `from_user` {#creation_method_from_user}
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
+### `from_user` {#creation_method_from_user}
 
 ```c#
 public Profile.from_user (User user)
 ```
 
 "Converts" an existing `User` to a `Profile` and loads the additional information needed.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
 ## Methods
 
@@ -169,22 +165,18 @@ public Profile.from_user (User user)
 
 ### `raw_description` {#field_raw_description}
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 private string raw_description
 ```
 
 The [`description`](#property_description) as it is recieved from the API, to be later formatted.
 
-| API   | Twitter 1     | Twitter 2     | Mastodon |
-| ----- | ------------- | ------------- | -------- |
-| Field | `description` | `description` | `note`   |
-| Type  | string        | string        | string   |
+| Scope        | `TwitterLegacy`        | `Twitter`              | `Mastodon`      |
+| ------------ | ---------------------- | ---------------------- | --------------- |
+| Available    | ✓                      | ✓                      | ✓               |
+| API-Endpoint | `description` (string) | `description` (string) | `note` (string) |
 
 ### `description_entities` {#field_description_entities}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 private TextEntity[] description_entities
@@ -192,11 +184,18 @@ private TextEntity[] description_entities
 
 All entities found in the text, to provide additional informations for the text formatting. See [TextEntity](../structure/TextEntity.md).
 
-| API   | Twitter 1    | Twitter 2    |
-| ----- | ------------ | ------------ |
-| Field | `entities`   | `entities`   |
-| Type  | array        | array        |
+| Scope        | `TwitterLegacy`     | `Twitter`           | `Mastodon`     |
+| ------------ | ------------------- | ------------------- | -------------- |
+| Available    | ✓                   | ✓                   | ✓              |
+| API-Endpoint | `entities` (entity) | `entities` (entity) | ![Internal][1] |
 
 > ### Inherited from [`User`](../../content/class/User.md)
 > 
 > [**`flags`**](../../content/class/User.md#field_flags)
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

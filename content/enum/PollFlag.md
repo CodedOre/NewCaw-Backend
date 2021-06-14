@@ -3,32 +3,38 @@ Author: Frederick Schenk
 
 # Content/PollFlag
 
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public enum PollFlag
 ```
 
 Some flags for [`Poll`](../class/Poll.md) for different scenarios.
 
-## `CLOSED`
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✗               | ✓              | ✓              |
+| API-Endpoint |                 | [Poll](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/poll) | [Poll](https://docs.joinmastodon.org/entities/poll/) |
 
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
+## `CLOSED`
 
 This Poll is closed and can't recieve additional votes.
 
-| API   | Twitter 2       | Mastodon  |
-| ----- | --------------- | --------- |
-| Field | `voting_status` | `expired` |
-| Type  | string (why?)   | bool      |
+| Scope        | `TwitterLegacy` | `Twitter`                | `Mastodon`       |
+| ------------ | --------------- | ------------------------ | ---------------- |
+| Available    | ✗               | ✓                        | ✓                |
+| API-Endpoint |                 | `voting_status` (string) | `expired` (bool) |
 
 ## `MULTIPLE`
 
-![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)\
-
 This Poll accepts multiple choice as votes.
 
-| API   | Mastodon   |
-| ----- | ---------- |
-| Field | `multiple` |
-| Type  | bool       |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`        |
+| ------------ | --------------- | -------------- | ----------------- |
+| Available    | ✗               | ✗              | ✓                 |
+| API-Endpoint |                 |                | `multiple` (bool) |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

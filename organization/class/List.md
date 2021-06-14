@@ -3,23 +3,20 @@ Author: Frederick Schenk
 
 # Organization/List
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface List : Collection
 ```
 
 `List` stores a list containing multiple posts and is a subclass of [`Collection`](Collection.md).
 
-| API      | Twitter 1 | Twitter 2 | Mastodon |
-| -------- | --------- | --------- | -------- |
-| Function | [`lists/show`](https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/create-manage-lists/api-reference/get-lists-show) |  | [`timelines/list`](https://docs.joinmastodon.org/methods/timelines/) |
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`     |
+| ------------ | --------------- | ------------------------- | -------------- |
+| Available    | ✓               | ✓                         | ✓              |
+| API-Endpoint | [`lists/show`](https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/create-manage-lists/api-reference/get-lists-show) | ![No API endpoint yet][2] | [`timelines/list`](https://docs.joinmastodon.org/methods/timelines/) |
 
 ## Properties
 
 ### `id` {#property_id}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public string id { get; }
@@ -27,14 +24,12 @@ public string id { get; }
 
 The unique identifier for this list.
 
-| API   | Twitter 1 | Twitter 2 | Mastodon |
-| ----- | --------- | --------- | -------- |
-| Field | `list_id` |           | `id`     |
-| Type  | string    |           | string   |
+| Scope        | `TwitterLegacy`    | `Twitter`                 | `Mastodon`     |
+| ------------ | ------------------ | ------------------------- | -------------- |
+| Available    | ✓                  | ✓                         | ✓              |
+| API-Endpoint | `list_id` (string) | ![No API endpoint yet][2] | `id` (string)  |
 
 ### `title`
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public string title { get; }
@@ -42,14 +37,12 @@ public string title { get; }
 
 The title of the list.
 
-| API   | Twitter 1 | Twitter 2 | Mastodon |
-| ----- | --------- | --------- | -------- |
-| Field | `name`    |           | `title`  |
-| Type  | string    |           | string   |
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`       |
+| ------------ | --------------- | ------------------------- | ---------------- |
+| Available    | ✓               | ✓                         | ✓                |
+| API-Endpoint | `name` (string) | ![No API endpoint yet][2] | `title` (string) |
 
 ### `title`
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public string title { get; }
@@ -57,14 +50,12 @@ public string title { get; }
 
 The title of the list.
 
-| API   | Twitter 1 | Twitter 2 | Mastodon |
-| ----- | --------- | --------- | -------- |
-| Field | `name`    |           | `title`  |
-| Type  | string    |           | string   |
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`       |
+| ------------ | --------------- | ------------------------- | ---------------- |
+| Available    | ✓               | ✓                         | ✓                |
+| API-Endpoint | `name` (string) | ![No API endpoint yet][2] | `title` (string) |
 
 ### `description` {#property_description}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square)
 
 ```c#
 public string description { get; }
@@ -72,14 +63,12 @@ public string description { get; }
 
 A description of the list.
 
-| API   | Twitter 1     | Twitter 2 |
-| ----- | ------------- | --------- |
-| Field | `description` |           |
-| Type  | string        |           |
+| Scope        | `TwitterLegacy`        | `Twitter`                 | `Mastodon`     |
+| ------------ | ---------------------- | ------------------------- | -------------- |
+| Available    | ✓                      | ✓                         | ✗              |
+| API-Endpoint | `description` (string) | ![No API endpoint yet][2] |                |
 
 ### `public_visible` {#property_public_visible}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square)
 
 ```c#
 public bool public_visible { get; }
@@ -87,10 +76,10 @@ public bool public_visible { get; }
 
 If the list is visible to the public.
 
-| API   | Twitter 1 | Twitter 2 |
-| ----- | --------- | --------- |
-| Field | `mode`    |           |
-| Type  | enum      |           |
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`     |
+| ------------ | --------------- | ------------------------- | -------------- |
+| Available    | ✓               | ✓                         | ✗              |
+| API-Endpoint | `mode` (enum)   | ![No API endpoint yet][2] |                |
 
 > ### Inherited from [`Collection`](Collection.md)
 > 
@@ -100,41 +89,39 @@ If the list is visible to the public.
 
 ### `List`
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public List (string id)
 ```
 
 Get a specified list (by it's id) and pulls the posts.
 
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`     |
+| ------------ | --------------- | ------------------------- | -------------- |
+| Available    | ✓               | ✓                         | ✓              |
+| API-Endpoint | ![Internal][1]  | ![No API endpoint yet][2] | ![Internal][1] |
+
 ## Methods
-
-### `get_posts` {#method_get_posts}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
-```c#
-public Post[] get_posts ()
-```
-
-Returns [`post_list`](#field_post_list) to the caller.
 
 ### `get_new_posts` {#method_get_new_posts}
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
-public Post[] get_new_posts ()
+public abstract Post[] get_new_posts ()
 ```
 
 Calls the API to load new posts and returns them.
 
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`     |
+| ------------ | --------------- | ------------------------- | -------------- |
+| Available    | ✓               | ✓                         | ✓              |
+| API-Endpoint | ![Internal][1]  | ![No API endpoint yet][2] | ![Internal][1] |
+
+> ### Inherited from [`Collection`](Collection.md)
+> 
+> [**`get_posts`**](Collection.md#method_get_posts)
+
 ## Fields
 
 ### `list_members` {#field_list_members}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public User[] list_members
@@ -142,16 +129,20 @@ public User[] list_members
 
 All list containing [`User`](../../content/class/User.md) that are part of this list.
 
-| API      | Twitter 1       | Twitter 2 | Mastodon         |
-| -------- | --------------- | --------- | ---------------- |
-| Function | `lists/members` |           | `lists/accounts` |
-
-> ### Inherited from [`User`](../../content/class/User.md)
-> 
-> [**`flags`**](../../content/class/User.md#field_flags)
+| Scope        | `TwitterLegacy`            | `Twitter`                 | `Mastodon`                  |
+| ------------ | -------------------------- | ------------------------- | --------------------------- |
+| Available    | ✓                          | ✓                         | ✓                           |
+| API-Endpoint | `lists/members` (function) | ![No API endpoint yet][2] | `lists/accounts` (function) |
 
 > ### Inherited from [`Collection`](Collection.md)
 > 
 > [**`post_list`**](Collection.md#field_post_list)
 > 
 > [**`last_pulled_post`**](Collection.md#field_last_pulled_post)
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

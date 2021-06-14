@@ -3,19 +3,20 @@ Author: Frederick Schenk
 
 # Content/PollOption
 
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public struct PollOption
 ```
 
 A small helper structure for storing options in a [`Poll`](../class/Poll.md).
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✗               | ✓              | ✓              |
+| API-Endpoint |                 | [Poll](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/poll) | [Poll](https://docs.joinmastodon.org/entities/poll/) |
+
 ## Fields
 
 ### `title`
-
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public string title
@@ -23,14 +24,12 @@ public string title
 
 The title of this option.
 
-| API   | Twitter 2 | Mastodon |
-| ----- | --------- | -------- |
-| Field | `label`   | `title`  |
-| Type  | string    | string   |
+| Scope        | `TwitterLegacy` | `Twitter`        | `Mastodon`       |
+| ------------ | --------------- | ---------------- | ---------------- |
+| Available    | ✗               | ✓                | ✓                |
+| API-Endpoint |                 | `label` (string) | `title` (string) |
 
 ### `votes`
-
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public int votes
@@ -38,14 +37,12 @@ public int votes
 
 How many votes this option got.
 
-| API   | Twitter 2 | Mastodon      |
-| ----- | --------- | ------------- |
-| Field | `votes`   | `votes_count` |
-| Type  | int       | int           |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`          |
+| ------------ | --------------- | -------------- | ------------------- |
+| Available    | ✗               | ✓              | ✓                   |
+| API-Endpoint |                 | `votes` (int)  | `votes_count` (int) |
 
 ### `user_voted`
-
-![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public bool user_voted
@@ -53,7 +50,14 @@ public bool user_voted
 
 True if the current user has voted for this option.
 
-| API   | Twitter 2 | Mastodon    |
-| ----- | --------- | ----------- |
-| Field |           | `own_votes` |
-| Type  |           | int array   |
+| Scope        | `TwitterLegacy` | `Twitter`                 | `Mastodon`              |
+| ------------ | --------------- | ------------------------- | ----------------------- |
+| Available    | ✗               | ✓                         | ✓                       |
+| API-Endpoint |                 | ![No API endpoint yet][2] | `own_votes` (int array) |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

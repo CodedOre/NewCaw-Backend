@@ -3,8 +3,6 @@ Author: Frederick Schenk
 
 # Organization/Thread
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface Thread
 ```
@@ -15,16 +13,15 @@ Threads are created for any Post which DetailView is called, if not done already
 
 > Twitter's v2 API does allow for querying the thread, making it easy and economical to contruct. However, Twitter's v1 API as well as Mastodon's API only provide a "replies to" field, which means we need to manually assemble the thread using this field.
 
-| API                | Twitter 1                   | Twitter 2                      | Mastodon         |
-| ------------------ | --------------------------- | ------------------------------ | ---------------- |
-| Thread field       |                             | `conversation_id`              |                  |
-| "Replied to" field | `in_reply_to_status_id_str` | `referenced_tweets.replied_to` | `in_reply_to_id` |
+| Scope                     | `TwitterLegacy`             | `Twitter`                      | `Mastodon`       |
+| ------------------------- | --------------------------- | ------------------------------ | ---------------- |
+| Available                 | ✓                           | ✓                              | ✓                |
+| API-Endpoint "Thread"     |                             | `conversation_id`              |                  |
+| API-Endpoint "Replied to" | `in_reply_to_status_id_str` | `referenced_tweets.replied_to` | `in_reply_to_id` |
 
 ## Static Methods
 
 ### `get_replies` {#static_method_get_replies}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public static Post[] get_replies (Post post)
@@ -32,9 +29,12 @@ public static Post[] get_replies (Post post)
 
 Retrieves all replies to the given Post.
 
-### `get_thread` {#static_method_get_thread}
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
+### `get_thread` {#static_method_get_thread}
 
 ```c#
 public static Post[] get_thread (Post post)
@@ -42,11 +42,14 @@ public static Post[] get_thread (Post post)
 
 Retrieves all posts that forms a thread from the given start point. When the tree branches, prefer tweets where previous mentioned people reply and those which are going deeper.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Creation Methods
 
 ### `Thread.from_post` {#creation_method_from_post}
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 ```c#
 public Thread.from_post (Post post, string? conversation_id = null)
@@ -54,11 +57,14 @@ public Thread.from_post (Post post, string? conversation_id = null)
 
 Takes a [`Post`](../../content/class/Post.md) and creates the Thread from it.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Fields
 
 ### `conversation_id` {#field_conversation_id}
-
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square)\
 
 ```c#
 private string? conversation_id
@@ -66,12 +72,27 @@ private string? conversation_id
 
 If available, we store the conversation_id so we can fetch additional posts from there.
 
-### `thread_node` {#field_thread_node}
+| Scope        | `TwitterLegacy` | `Twitter`                  | `Mastodon`     |
+| ------------ | --------------- | -------------------------- | -------------- |
+| Available    | ✗               | ✓                          | ✗              |
+| API-Endpoint |                 | `conversation_id` (string) |                |
 
-![API: Internal](https://img.shields.io/badge/API-Internal-green?style=flat-square)\
+### `thread_node` {#field_thread_node}
 
 ```c#
 private GLib.Node<Post> thread_node
 ```
 
 The node with the [`Post`](../content/class/Post.md) which started this Thread. Used internally to retrieve additional posts.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

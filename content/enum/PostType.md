@@ -3,30 +3,49 @@ Author: Frederick Schenk
 
 # Content/PostType
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public enum PostType
 ```
 
 Defines the type a [`Post`](../class/Post.md) can be.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Values
 
 ### `NORMAL`
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
+A normal Post without connections to previous posts.
 
-A normal Post which was created from a "Create Post" Widget.
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
 ### `REPOST`
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 A Post which reposts content from an different Post without adding new content.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
 ### `QUOTE`
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 A Post which reposts content from an different Post with new content added.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

@@ -3,25 +3,31 @@ Author: Frederick Schenk
 
 # Organization/Account
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface Account : Profile
 ```
 
 `Account` is a subclass of [`Profile`](../../content/class/Profile.md) which manages a account which uses Cawbird.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Properties
 
 ### `access_proxy`
-
-![API: Internal](https://img.shields.io/badge/API-Internal-green?style=flat-square) \
 
 ```c#
 public Rest.OAuthProxy access_proxy { get; }
 ```
 
 The proxy that allows to do an API-call.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
 > ### Inherited from [`Profile`](../../content/class/Profile.md)
 > 
@@ -76,3 +82,10 @@ The proxy that allows to do an API-call.
 > > #### Inherited from [`User`](../../content/class/User.md)
 > > 
 > > [**`flags`**](../../content/class/User.md#field_flags)
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

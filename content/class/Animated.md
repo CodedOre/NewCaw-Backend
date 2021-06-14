@@ -3,8 +3,6 @@ Author: Frederick Schenk
 
 # Content/Animated
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public interface Animated : Media
 ```
@@ -13,13 +11,12 @@ public interface Animated : Media
 
 > From a technically standpoint `Animated` is just a video without audio, but since it is intended to loop and has different controls it is a separate subclass.
 
-| API    | Twitter 1 | Twitter 2 | Mastodon |
-| ------ | --------- | --------- | -------- |
-| Object | [Media](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/entities#media) | [Media](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media) | [Attachment](https://docs.joinmastodon.org/entities/attachment/) |
+| Scope        | `TwitterLegacy` | `Twitter` | `Mastodon` |
+| ------------ | --------------- | --------- | ---------- |
+| Available    | ✓               | ✓         | ✓          |
+| API-Endpoint | [Media](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/entities#media) | [Media](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media) | [Attachment](https://docs.joinmastodon.org/entities/attachment/) |
 
 ## Properties
-
-> When the media was loaded it returns [`media_item_data`](#field_media_item_data), otherwise it returns `null` and initiates [`load_media`](#method_load_media).
 
 > ### Inherited from [`Media`](Media.md)
 > 
@@ -47,25 +44,31 @@ public interface Animated : Media
 
 ### `Picture.from_json` {#creation_method_from_json}
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public Picture.from_json (Json.Object obj)
 ```
 
 Creates a new object out of a given Json object from other points.
 
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
+
 ## Methods
 
 ### `load_media` {#method_load_media}
-
-![API: Internal](https://img.shields.io/badge/API-Internal-green?style=flat-square)\
 
 ```c#
 public async Gtk.MediaFile load_media ()
 ```
 
 Loads the media and returns it. Activates [`load_media_completed`](Media.md#signal_load_media_completed) on completion.
+
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | ![Internal][1] |
 
 > ### Inherited from [`Media`](Media.md)
 > 
@@ -78,3 +81,10 @@ Loads the media and returns it. Activates [`load_media_completed`](Media.md#sign
 > [**`load_preview_completed`**](Media.md#signal_load_preview_completed)
 > 
 > [**`load_media_completed`**](Media.md#signal_load_media_completed)
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

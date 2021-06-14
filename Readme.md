@@ -13,19 +13,18 @@ The idea behind **NewCaw** is to rewrite [Cawbird](https://www.ibboard.co.uk/caw
 - Improvement of the Backend, making it better maintainable.
 - Addition of support for the new Twitter API v2.
 
-## API-Flags
+## APIScope-Table
 
-The API-Flags define in which scope a functionality is used and where it get's it's information from.
+NewCaw is designed with multiple backends in mind, which will subclass the structure here in the following namespaces: The [old API from Twitter](https://developer.twitter.com/en/docs/twitter-api/v1) as `TwitterLegacy`, the [upcoming new API from Twitter](https://developer.twitter.com/en/docs/twitter-api) as `Twitter`, and (if feasable) the [API from Mastodon](https://docs.joinmastodon.org/client/intro/) as `Mastodon`.
 
-![API: Internal](https://img.shields.io/badge/API-Internal-green?style=flat-square) - Internal functions in our backend.
+As there are multiple API's delivering required data under different names, and also having different functionalities, the following documents contains a APIScope-Table to note for which scopes a element is available and also (if existent) note the API endpoint targeted from the element.
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) - The Legacy API from Twitter ([Link](https://developer.twitter.com/en/docs/twitter-api/v1)).
+The table is structured as followed:
 
-![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) - The new API from Twitter, slowly replacing the API v1 ([Link](https://developer.twitter.com/en/docs/twitter-api)).
-
-![API: Twitter 2 (Not yet)](https://img.shields.io/badge/API-Twitter%202%20(Not%20yet)-darkred?style=flat-square) - Required functionality from the new API of Twitter, which is not (yet) available.
-
-![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square) - The API from Mastodon, an alternative Service **maybe** included in NewCaw ([Link](https://docs.joinmastodon.org/client/intro/)).
+| Scope        | One of NewCaws backends                                        |
+| ------------ | -------------------------------------------------------------- |
+| Available    | If the element is available in the scope.                      |
+| API-Endpoint | The endpoint of the api. If nothing, then internally filled.   |
 
 ## Files
 
@@ -73,3 +72,7 @@ The API-Flags define in which scope a functionality is used and where it get's i
 
 **Namespaces** \
 [`ParseUtils`](utils/namespace/ParseUtils.md)
+
+---
+
+*© 2021, Frederick Schenk*

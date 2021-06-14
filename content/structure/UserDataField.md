@@ -3,8 +3,6 @@ Author: Frederick Schenk
 
 # Content/UserDataField
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public structure UserDataField
 ```
@@ -15,9 +13,10 @@ public structure UserDataField
 >
 > Therefore Mastodon has a own specification for fields, where on Twitter we only populate this with two string from other fields.
 
-| API    | Mastodon |
-| ------ | -------- |
-| Object | [Field](https://docs.joinmastodon.org/entities/field/) |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | [Field](https://docs.joinmastodon.org/entities/field/) |
 
 ## Fields
 
@@ -29,10 +28,10 @@ public string name
 
 The key for the field.
 
-| API   | Mastodon |
-| ----- | -------- |
-| Field | `name`   |
-| Type  | string   |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`      |
+| ------------ | --------------- | -------------- | --------------- |
+| Available    | ✓               | ✓              | ✓               |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | `name` (string) |
 
 ### `value`
 
@@ -42,7 +41,14 @@ public string value
 
 The value of the field.
 
-| API   | Mastodon |
-| ----- | -------- |
-| Field | `value`  |
-| Type  | string   |
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`       |
+| ------------ | --------------- | -------------- | ---------------- |
+| Available    | ✓               | ✓              | ✓                |
+| API-Endpoint | ![Internal][1]  | ![Internal][1] | `value` (string) |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square

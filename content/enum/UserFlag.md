@@ -3,34 +3,40 @@ Author: Frederick Schenk
 
 # Content/UserFlag
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
-
 ```c#
 public enum UserFlag
 ```
 
 Some flags for [`User`](../class/User.md) for different scenarios.
 
-## `VERIFIED`
+| Scope        | `TwitterLegacy` | `Twitter`      | `Mastodon`     |
+| ------------ | --------------- | -------------- | -------------- |
+| Available    | ✓               | ✓              | ✓              |
+| API-Endpoint | [User](https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/object-model/user) | [User](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user) | [Account](https://docs.joinmastodon.org/entities/account/) |
 
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square)
+## `VERIFIED`
 
 Set if the User is verified by the platform.
 
-| API   | Twitter 1  | Twitter 2  |
-| ----- | ---------- | ---------- |
-| Field | `verified` | `verified` |
-| Type  | bool       | bool       |
+| Scope        | `TwitterLegacy`   | `Twitter`         | `Mastodon`     |
+| ------------ | ----------------- | ----------------- | -------------- |
+| Available    | ✓                 | ✓                 | ✗              |
+| API-Endpoint | `verified` (bool) | `verified` (bool) |                |
 
 ## `PROTECTED`
-
-![API: Twitter 1](https://img.shields.io/badge/API-Twitter%201-lightgrey?style=flat-square) ![API: Twitter 2](https://img.shields.io/badge/API-Twitter%202-blue?style=flat-square) ![API: Mastodon](https://img.shields.io/badge/API-Mastodon-purple?style=flat-square)
 
 Set if the User moderates it's followers.
 
 > On Twitter, this also set's if Tweets are visible to non-followers, however, this does not apply to Mastodon, where visibility of Toots is set for each seperatly.
 
-| API   | Twitter 1   | Twitter 2   | Mastodon |
-| ----- | ----------- | ----------- | -------- |
-| Field | `protected` | `protected` | `locked` |
-| Type  | bool        | bool        | bool     |
+| Scope        | `TwitterLegacy`    | `Twitter`          | `Mastodon`      |
+| ------------ | ------------------ | ------------------ | --------------- |
+| Available    | ✓                  | ✓                  | ✓               |
+| API-Endpoint | `protected` (bool) | `protected` (bool) | `locked` (bool) |
+
+---
+
+*© 2021, Frederick Schenk*
+
+[1]: https://img.shields.io/badge/-Internal-yellow?style=flat-square
+[2]: https://img.shields.io/badge/-No%20API%20endpoint%20yet-red?style=flat-square
